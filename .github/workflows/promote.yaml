@@ -34,12 +34,12 @@ jobs:
             echo "promote-to=stable" >> ${GITHUB_ENV}
           fi
       - name: Promote charm to latest
-        if: github.ref_name=="main"
+        if: github.ref_name == 'main'
         run: |
           echo latest/${{ env.promote-from }}
           echo latest/${{ env.promote-to }}
       - name: Promote charm to release track
-        if: github.ref_name!="main"
+        if: github.ref_name != 'main'
         run: |
           echo github.ref_name/${{ env.promote-to }}
           echo github.ref_name/${{ env.promote-from }}
